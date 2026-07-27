@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* ==========================================================
+   LIGHT THEME
+========================================================== */
+
+:root {
+
+	/* Backgrounds */
+
+	--bg: #f8fafc;
+	--bg-soft: #f1f5f9;
+	--bg-glow: rgba(249, 115, 22, 0.08);
+
+	/* Surfaces */
+
+	--surface: #ffffff;
+	--smooth-surface: rgba(255,255,255,.72);
+	--surface-strong: #e5e7eb;
+
+	/* Typography */
+
+	--font-display: "Inter", "Segoe UI", sans-serif;
+
+	/* Text */
+
+	--text: #111827;
+	--text-muted: #6b7280;
+
+	/* Brand */
+
+	--primary: #f97316;
+	--primary-hover: #ea580c;
+	--primary-light: #ffedd5;
+
+	/* Status */
+
+	--success: #16a34a;
+	--warning: #f59e0b;
+	--danger: #dc2626;
+
+	/* Borders */
+
+	--border: #e5e7eb;
+	--border-hover: #cbd5e1;
+
+	/* Effects */
+
+	--shadow: 0 10px 30px rgba(0,0,0,.08);
+
+	--hero-img-filter: brightness(1) saturate(1);
+}
+
+
+/* ==========================================================
+   DARK THEME
+========================================================== */
+
+html.dark {
+
+	/* Backgrounds */
+
+	--bg: #0f172a;
+	--bg-soft: #111827;
+	--bg-glow: rgba(249,115,22,.12);
+
+	/* Surfaces */
+
+	--surface: #1e293b;
+	--smooth-surface: rgba(30,41,59,.75);
+	--surface-strong: #334155;
+
+	/* Text */
+
+	--text: #ffffff;
+	--text-muted: #cbd5e1;
+
+	/* Brand */
+
+	--primary: #fb923c;
+	--primary-hover: #f97316;
+	--primary-light: rgba(251,146,60,.12);
+
+	/* Status */
+
+	--success: #22c55e;
+	--warning: #fbbf24;
+	--danger: #ef4444;
+
+	/* Borders */
+
+	--border: rgba(255,255,255,.08);
+	--border-hover: rgba(255,255,255,.16);
+
+	/* Effects */
+
+	--shadow: 0 10px 30px rgba(0,0,0,.35);
+
+	--hero-img-filter: brightness(.85) saturate(.95);
+}
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+html {
+	background: var(--bg);
+	color: var(--text);
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at top, var(--bg-glow), transparent 35%),
+		linear-gradient(180deg, var(--bg-soft), var(--bg));
+	color: var(--text);
+	transition: background .3s ease, color .3s ease;
+}
+
+/* ==========================================================
+   INPUT AUTOFILL
+========================================================== */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-text-fill-color: var(--text);
+	caret-color: var(--text);
+	box-shadow: 0 0 0 1000px var(--surface) inset;
+	transition: background-color 9999s ease-in-out 0s;
+}
