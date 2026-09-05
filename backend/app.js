@@ -10,7 +10,17 @@ app.set("trust proxy", 1);
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (!process.env.CLIENT_URL || process.env.CLIENT_URL === '*') {
+        return callback(null, origin);
+      }
+      const allowed = process.env.CLIENT_URL.split(',').map((u) => u.trim());
+      if (allowed.includes(origin)) {
+        return callback(null, origin);
+      }
+      return callback(null, origin);
+    },
     credentials: true,
   })
 );
