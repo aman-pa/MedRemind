@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const isValidUrl = rawApiUrl && rawApiUrl.startsWith("http");
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: isValidUrl ? rawApiUrl : "https://medremind-iaeu.onrender.com/api",
   withCredentials: true,
 });
 

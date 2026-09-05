@@ -39,7 +39,7 @@ export default function Register() {
         state: { registered: true },
       });
     } catch (error) {
-      setApiError(error.response?.data?.message || "Registration failed. Please try again.");
+      setApiError(error.response?.data?.message || error.message || "Registration failed. Please try again.");
     }
   };
 
