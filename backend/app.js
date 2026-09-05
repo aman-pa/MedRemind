@@ -31,6 +31,14 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(morgan('dev'));
 }
 
+app.get('/', (_req, res) => {
+  res.json({ success: true, message: 'MedRemind Backend API is running' });
+});
+
+app.get('/api', (_req, res) => {
+  res.json({ success: true, message: 'MedRemind API v1' });
+});
+
 app.use('/api', routes);
 
 app.use((_request, response) => {
