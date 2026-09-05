@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const comparePassword = async (password, hashedPassword) => {
     return bcrypt.compare(password,hashedPassword);
