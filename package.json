@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "postinstall": "cd backend && npm install",
-    "build": "cd backend && npm install",
-    "start": "cd backend && node server.js"
+    "postinstall": "npm install --prefix backend || true",
+    "build": "npm install --prefix backend || true",
+    "start": "node backend/server.js || node server.js"
   }
 }
