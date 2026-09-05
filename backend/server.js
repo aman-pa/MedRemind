@@ -4,21 +4,10 @@ import app from './app.js';
 
 const port = process.env.PORT || 5000;
 
-async function startServer() {
-	const mongoUri = process.env.MONGODB_URI;
+app.listen(port, () => {
+	console.log(`MedRemind backend running on port ${port}`);
+});
 
-	if (!mongoUri) {
-		throw new Error('MONGODB_URI is not defined. Check backend/.env');
-	}
-
-	await connectDB();
-
-	app.listen(port, () => {
-		console.log(`MedRemind backend running on port ${port}`);
-	});
-}
-
-startServer().catch((error) => {
-	console.error('Failed to start backend:', error.message);
-	process.exit(1);
+connectDB().catch((error) => {
+	console.error('Failed to connect DB:', error.message);
 });
