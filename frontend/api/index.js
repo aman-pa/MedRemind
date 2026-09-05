@@ -1,5 +1,5 @@
-import app from "../../backend/app.js";
-import connectDB from "../../backend/config/db.js";
+import app from "../backend/app.js";
+import connectDB from "../backend/config/db.js";
 
 export default async function handler(req, res) {
   try {
