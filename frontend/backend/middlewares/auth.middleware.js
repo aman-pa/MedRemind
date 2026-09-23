@@ -4,7 +4,7 @@ import { verifyToken } from "../shared/utils/verifyToken.js";
 export const authenticate = async (req,res,next) => {
     try{
        
-        let token = req.cookies[process.env.COOKIE_NAME];
+        let token = req.cookies ? req.cookies[process.env.COOKIE_NAME || "token"] : undefined;
         if (!token && req.headers.authorization && req.headers.authorization.startsWith("Bearer ")) {
             token = req.headers.authorization.split(" ")[1];
         }

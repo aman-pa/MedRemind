@@ -26,7 +26,7 @@ export const login = async (req, res, next) => {
     try{
         const {token, user} = await loginService(req.body);
 
-        res.cookie(process.env.COOKIE_NAME, token, accessTokenCookieOptions);
+        res.cookie(process.env.COOKIE_NAME || "token", token, accessTokenCookieOptions);
 
         return res.status(200).json({
             success: true,
@@ -84,7 +84,7 @@ export const resetPassword = async (req,res,next) => {
 }
 
 export const logout = async (req,res,next) => {
-    res.clearCookie(process.env.COOKIE_NAME, accessTokenCookieOptions);
+    res.clearCookie(process.env.COOKIE_NAME || "token", accessTokenCookieOptions);
     return res.status(200).json({
         success: true,
         message: "Logged out successfully.",
@@ -98,7 +98,7 @@ export const googleLogin = async (req, res, next) => {
         const { token: googleToken, role } = req.body;
         const { token, user } = await googleLoginService(googleToken, role);
 
-        res.cookie(process.env.COOKIE_NAME, token, accessTokenCookieOptions);
+        res.cookie(process.env.COOKIE_NAME || "token", token, accessTokenCookieOptions);
 
         return res.status(200).json({
             success: true,
